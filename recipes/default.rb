@@ -22,9 +22,11 @@ execute  "phalcon-build" do
 	user "root"
 	command %{./install}
 
-	not_if do
-		::File.exists?("#{node['php-phalcon']['conf_dir']}/#{node['php-phalcon']['conf_file']}")
-	end
+    node['php-phalcon']['conf_dirs'].each do |conf_dir|
+        not_if do
+            ::File.exists?("#{conf_dir}/#{node['php-phalcon']['conf_file']}")
+        end
+    end
 end
 
 template "#{node['php-phalcon']['conf_dir']}/#{node['php-phalcon']['conf_file']}" do
