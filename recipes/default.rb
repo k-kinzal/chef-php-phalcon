@@ -23,11 +23,11 @@ execute  "phalcon-build" do
 	command %{./install}
 
 	not_if do
-		::File.exists?("#{node['php-phalcon']['conf_dir']}/phalcon.ini")
+		::File.exists?("#{node['php-phalcon']['conf_dir']}/#{node['php-phalcon']['conf_file']}")
 	end
 end
 
-template "#{node['php-phalcon']['conf_dir']}/phalcon.ini" do
+template "#{node['php-phalcon']['conf_dir']}/#{node['php-phalcon']['conf_file']}" do
 	source "phalcon.ini.erb"
 	owner "root"
 	group "root"
