@@ -29,9 +29,11 @@ execute  "phalcon-build" do
     end
 end
 
-template "#{node['php-phalcon']['conf_dir']}/#{node['php-phalcon']['conf_file']}" do
-	source "phalcon.ini.erb"
-	owner "root"
-	group "root"
-	mode 0644
+node['php-phalcon']['conf_dirs'].each do |conf_dir|
+    template "#{conf_dir}/#{node['php-phalcon']['conf_file']}" do
+        source "phalcon.ini.erb"
+        owner "root"
+        group "root"
+        mode 0644
+    end
 end
