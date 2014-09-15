@@ -41,10 +41,10 @@ end
 if node['php-phalcon']['devtools']
     bash "phalcon-devtools" do
         user "root"
-        cwd "#{path}/"
+        cwd "/usr/share"
         code <<-EOH
-            git clone https://github.com/phalcon/phalcon-devtools.git devtools
-            cd devtools
+            git clone https://github.com/phalcon/phalcon-devtools.git
+            cd phalcon-devtools
             . ./phalcon.sh
         EOH
     end
