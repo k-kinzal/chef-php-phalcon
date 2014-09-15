@@ -15,3 +15,5 @@ when "debian"
     default['php-phalcon']['conf_file'] = '30-phalcon.ini'
 
 end
+
+default['php-phalcon']['devtools'] = true

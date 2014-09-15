@@ -37,3 +37,15 @@ node['php-phalcon']['conf_dirs'].each do |conf_dir|
         mode 0644
     end
 end
+
+if node['php-phalcon']['devtools']
+    bash "phalcon-devtools" do
+        user "root"
+        cwd "#{path}/"
+        code <<-EOH
+            git clone https://github.com/phalcon/phalcon-devtools.git devtools
+            cd devtools
+            . ./phalcon.sh
+        EOH
+    end
+end
