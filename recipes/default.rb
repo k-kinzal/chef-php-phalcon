@@ -46,6 +46,7 @@ if node['php-phalcon']['devtools']
             git clone https://github.com/phalcon/phalcon-devtools.git
             cd phalcon-devtools
             . ./phalcon.sh
+			ln -s /usr/share/phalcon-devtools/phalcon.php /usr/bin/phalcon
         EOH
     end
 end
