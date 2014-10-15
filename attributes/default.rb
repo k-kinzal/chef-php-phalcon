@@ -11,7 +11,7 @@ when "rhel", "fedora"
 when "debian"
 
     default['php-phalcon']['packages'] = ['git', 'php5-dev', 'libpcre3-dev', 'gcc', 'make', 'php5-mysql']
-    default['php-phalcon']['conf_dirs'] = ['/etc/php.d']
+    default['php-phalcon']['conf_dirs'] = ['/etc/php5/mods-available']
     default['php-phalcon']['conf_file'] = '30-phalcon.ini'
 
 end
