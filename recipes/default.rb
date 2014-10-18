@@ -38,6 +38,15 @@ node['php-phalcon']['conf_dirs'].each do |conf_dir|
     end
 end
 
+node['php-phalcon']['conf_cli_dirs'].each do |conf_cli_dirs|
+    template "#{conf_cli_dirs}/#{node['php-phalcon']['conf_file']}" do
+        source "phalcon.ini.erb"
+        owner "root"
+        group "root"
+        mode 0644
+    end
+end
+
 if node['php-phalcon']['devtools']
     bash "phalcon-devtools" do
         user "root"
