@@ -55,7 +55,10 @@ if node['php-phalcon']['devtools']
             git clone https://github.com/phalcon/phalcon-devtools.git
             cd phalcon-devtools
             . ./phalcon.sh
-			ln -s /usr/share/phalcon-devtools/phalcon.php /usr/bin/phalcon
+            ln -s /usr/share/phalcon-devtools/phalcon.php /usr/bin/phalcon
         EOH
+        not_if do
+            ::File.exists?('/usr/bin/phalcon')
+        end
     end
 end
